@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+}
+
+/* This tells Tailwind to use class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+  
+  body {
+    font-family: 'DM Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .dept-badge {
+    @apply inline-block px-2 py-0.5 rounded-md text-xs font-semibold;
+  }
+  .dept-eng {
+    @apply bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+  .dept-mkt {
+    @apply bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400;
+  }
+  .dept-sal {
+    @apply bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400;
+  }
+  .dept-hr {
+    @apply bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400;
+  }
+  .dept-fin {
+    @apply bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  .dept-ops {
+    @apply bg-cyan-50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400;
+  }
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .status-active {
+    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+  }
+  .status-inactive {
+    @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400;
+  }
+  .status-pending {
+    @apply bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  .status-dot {
+    @apply w-1.5 h-1.5 rounded-full;
+  }
+  .status-active .status-dot { @apply bg-green-700 dark:bg-green-400; }
+  .status-inactive .status-dot { @apply bg-red-700 dark:bg-red-400; }
+  .status-pending .status-dot { @apply bg-amber-700 dark:bg-amber-400; }
+  
+  /* Toast component styles */
+  .toast {
+    @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 shadow-lg flex items-center gap-2 text-sm font-medium max-w-sm;
+    animation: slideIn 0.2s ease-out;
+  }
+  
+  .toast-success {
+    @apply border-l-4 border-l-green-500 text-gray-900 dark:text-white;
+  }
+  
+  .toast-error {
+    @apply border-l-4 border-l-red-500 text-gray-900 dark:text-white;
+  }
+  
+  .toast-info {
+    @apply border-l-4 border-l-blue-500 text-gray-900 dark:text-white;
+  }
+}
+
+@layer utilities {
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.2s ease-out;
+  }
+  
+  .animate-spin-custom {
+    animation: spin 0.6s linear infinite;
+  }
+}
